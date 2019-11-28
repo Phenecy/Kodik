@@ -63,21 +63,7 @@ out/
 proguard/
 vcs.xml
 
-.project
-.settings/
-.classpath
-
-.idea
-*.iml
-local.properties
-build
-.gradle
-
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
-.DS_Store
-/build
 /app/src/androidTest/java/dev/bonch/kodik/ExampleInstrumentedTest.kt
 /app/src/test/java/dev/bonch/kodik/ExampleUnitTest.kt
+/.idea/codeStyles/
+/.idea/runConfigurations.xml
