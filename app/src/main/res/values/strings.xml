@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Kodik</string>
+    <string name="splash_screen_description">Проверь свои знания</string>
+    <string name="registration_text_view">РЕГИСТРАЦИЯ</string>
+    <string name="registration_name_text_view">Имя</string>
+    <string name="registration_email_text_view">E-mail</string>
+    <string name="registration_password_text_view">Пароль</string>
+    <string name="registration_password_repeat_text_view">Ещё раз пароль</string>
+    <string name="registration_button_text">ЗАРЕГЕСТРИРОВАТЬСЯ</string>
 </resources>
