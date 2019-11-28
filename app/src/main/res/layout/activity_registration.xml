@@ -105,16 +105,16 @@
         tools:targetApi="p" />
 
     <Button
-        android:textAlignment="center"
-        android:background="@drawable/round_corner"
-        android:id="@+id/button"
+        android:id="@+id/registration_button"
         android:layout_width="360dp"
         android:layout_height="50dp"
+        android:background="@drawable/round_corner"
+        android:fontFamily="@font/rubik"
+        android:text="@string/registration_button_text"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:fontFamily="@font/rubik"
-        android:textColor="@color/white"
-        android:text="@string/registration_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
