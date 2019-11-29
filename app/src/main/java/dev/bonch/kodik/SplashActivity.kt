@@ -2,6 +2,7 @@ package dev.bonch.kodik
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -9,6 +10,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SplashActivity : AppCompatActivity() {
 
@@ -19,6 +21,8 @@ class SplashActivity : AppCompatActivity() {
 
     private val SPLASH_DURATION = 2500
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
@@ -27,7 +31,6 @@ class SplashActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.splash_progress_bar)
         imageView = findViewById(R.id.splash_icon)
         animation = AnimationUtils.loadAnimation(baseContext, R.anim.rotate)
-
     }
 
     private fun initFunctionality() {

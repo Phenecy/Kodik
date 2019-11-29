@@ -6,5 +6,8 @@
     <string name="registration_email_text_view">E-mail</string>
     <string name="registration_password_text_view">Пароль</string>
     <string name="registration_password_repeat_text_view">Ещё раз пароль</string>
-    <string name="registration_button_text">ЗАРЕГЕСТРИРОВАТЬСЯ</string>
+    <string name="registration_button_text">ЗАРЕГИСТРИРОВАТЬСЯ</string>
+    <string name="registration_have_account"><u>Уже есть аккаунт</u></string>
+    <string name="login_button">Войти</string>
+    <string name="login_text">Вход</string>
 </resources>
