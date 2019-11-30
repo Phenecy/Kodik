@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ff9800</color>
-    <color name="colorPrimaryDark">#c66900</color>
-    <color name="colorAccent">#ffc947</color>
+    <color name="colorPrimary">#F57C00</color>
+    <color name="colorPrimaryDark">#8A000000</color>
+    <color name="colorAccent">#ff9800</color>
+    <color name="colorPrimaryRipple">#ffcc80</color>
 
     <!--Common colors-->
     <color name="bg_splash">#FFFFFF</color>
@@ -37,8 +38,9 @@
 
     <color name="title_color">#818181</color>
     <color name="toolbar_boarder">#e5e6ea</color>
-    <color name="registration_main_color">#EABE7C</color>
+    <color name="registration_main_color">#F57C00</color>
     <color name="registration_button_color">#70AE6E</color>
+    <color name="unchecked_icon_color">#757575</color>
 
 </resources>
 

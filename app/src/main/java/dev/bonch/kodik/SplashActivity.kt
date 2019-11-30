@@ -2,15 +2,17 @@ package dev.bonch.kodik
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.activity_splash_afterload.*
 
 class SplashActivity : AppCompatActivity() {
 
@@ -19,8 +21,9 @@ class SplashActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var layout: ConstraintLayout
 
-    private val SPLASH_DURATION = 2500
+    private lateinit var auth: FirebaseAuth
 
+    private val SPLASH_DURATION = 2500
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,11 +46,39 @@ class SplashActivity : AppCompatActivity() {
                 override fun onAnimationRepeat(animation: Animation) {}
 
                 override fun onAnimationEnd(animation: Animation) {
-                    intent = Intent(this@SplashActivity, RegistrationActivity::class.java)
-                    startActivity(intent)
+                    auth = FirebaseAuth.getInstance()
+                    val currentUser = auth.currentUser
+                    updateUI(currentUser)
+
+                    setContentView(R.layout.activity_splash_afterload)
+
+                    val regButton: Button = splash_reg_button
+                    val loginButton: Button = splash_login_button
+                    regButton.setOnClickListener {
+                        intent = Intent(this@SplashActivity, RegistrationActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+                        startActivity(intent)
+                        finish()
+                    }
+                    loginButton.setOnClickListener {
+                        intent = Intent(this@SplashActivity, LoginActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+                        startActivity(intent)
+                        finish()
+                    }
+
+
                 }
             })
         }, SPLASH_DURATION.toLong())
+    }
+
+    private fun updateUI(user: FirebaseUser?) {
+        if (user != null) {
+            intent = Intent(this@SplashActivity, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+            startActivity(intent)
+        } else return
     }
 
     override fun onResume() {

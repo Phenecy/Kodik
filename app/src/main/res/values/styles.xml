@@ -1,18 +1,19 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
+        <item name="colorControlHighlight">@color/colorPrimaryRipple</item>
     </style>
 
     <style name="RegistrationTheme">
         <item name="android:textSize">24sp</item>
-        <item name="android:textColor">#DC8400</item>
+        <item name="android:textColor">#F57C00</item>
     </style>
 
 </resources>
