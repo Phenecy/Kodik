@@ -3,6 +3,7 @@ package dev.bonch.kodik
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -46,9 +47,8 @@ class RegistrationActivity : AppCompatActivity() {
         registrationButton.setOnClickListener {
             onClickRegister()
         }
-
         alreadyHaveAccountTextView.setOnClickListener {
-            intent = Intent(this@RegistrationActivity, LoginActivity::class.java)
+            val intent = Intent(this@RegistrationActivity, LoginActivity::class.java)
             startActivity(intent)
         }
     }
@@ -65,7 +65,9 @@ class RegistrationActivity : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     intent = Intent(this@RegistrationActivity, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
                     startActivity(intent)
+                    finish()
                 } else {
                     Toast.makeText(applicationContext, "Что-то пошло не так", Toast.LENGTH_SHORT)
                         .show()

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationActivity">
+    tools:context=".LoginActivity">
 
 
     <TextView
@@ -66,17 +66,42 @@
         android:id="@+id/login_button"
         android:layout_width="360dp"
         android:layout_height="50dp"
-        android:background="@drawable/round_corner"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/ef_round_corner_button_green_gradient"
         android:fontFamily="@font/rubik"
         android:text="@string/login_button"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_password_edit_text" />
 
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/login_google_sign_in"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_button" />
+
+    <TextView
+        android:id="@+id/login_registration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:autoLink="all"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/rubik"
+        android:linksClickable="true"
+        android:selectAllOnFocus="true"
+        android:text="@string/login_registration_needed"
+        android:textColor="@color/registration_main_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

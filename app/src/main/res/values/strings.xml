@@ -7,7 +7,9 @@
     <string name="registration_password_text_view">Пароль</string>
     <string name="registration_password_repeat_text_view">Ещё раз пароль</string>
     <string name="registration_button_text">ЗАРЕГИСТРИРОВАТЬСЯ</string>
-    <string name="registration_have_account"><u>Уже есть аккаунт</u></string>
+    <string name="login_registration_needed"><u>Зарегистрироваться</u></string>
     <string name="login_button">Войти</string>
     <string name="login_text">Вход</string>
+    <string name="splash_intro_text">Привет! Мы уже знакомы?\n\n Войди или зарегистрируйся прямо сейчас ;)</string>
+    <string name="registration_already_have_acc"><u>Уже есть аккаунт</u></string>
 </resources>

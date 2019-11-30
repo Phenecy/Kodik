@@ -108,7 +108,7 @@
         android:id="@+id/login_button"
         android:layout_width="360dp"
         android:layout_height="50dp"
-        android:background="@drawable/round_corner"
+        android:background="@drawable/ef_round_corner_button_green_gradient"
         android:fontFamily="@font/rubik"
         android:text="@string/registration_button_text"
         android:textAlignment="center"
@@ -132,11 +132,12 @@
         android:fontFamily="@font/rubik"
         android:linksClickable="true"
         android:selectAllOnFocus="true"
-        android:text="@string/registration_have_account"
+        android:text="@string/registration_already_have_acc"
         android:textColor="@color/registration_main_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
