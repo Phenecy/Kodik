@@ -12,4 +12,9 @@
     <string name="login_text">Вход</string>
     <string name="splash_intro_text">Привет! Мы уже знакомы?\n\n Войди или зарегистрируйся прямо сейчас ;)</string>
     <string name="registration_already_have_acc"><u>Уже есть аккаунт</u></string>
+    <string name="home_courses_sample">PYTHON</string>
+    <string name="courses_title">МОИ КУРСЫ</string>
+    <string name="home_title">КУРСЫ</string>
+    <string name="notifications_title">УВЕДОМЛЕНИЯ</string>
+    <string name="notification_text">Поздравляем! Ты получил награду \"<b>Знаток</b>\"!</string>
 </resources>
