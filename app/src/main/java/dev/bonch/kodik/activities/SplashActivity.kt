@@ -1,4 +1,4 @@
-package dev.bonch.kodik
+package dev.bonch.kodik.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import dev.bonch.kodik.R
 import kotlinx.android.synthetic.main.activity_splash_afterload.*
 
 class SplashActivity : AppCompatActivity() {
@@ -49,25 +50,6 @@ class SplashActivity : AppCompatActivity() {
                     auth = FirebaseAuth.getInstance()
                     val currentUser = auth.currentUser
                     updateUI(currentUser)
-
-                    setContentView(R.layout.activity_splash_afterload)
-
-                    val regButton: Button = splash_reg_button
-                    val loginButton: Button = splash_login_button
-                    regButton.setOnClickListener {
-                        intent = Intent(this@SplashActivity, RegistrationActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
-                        startActivity(intent)
-                        finish()
-                    }
-                    loginButton.setOnClickListener {
-                        intent = Intent(this@SplashActivity, LoginActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
-                        startActivity(intent)
-                        finish()
-                    }
-
-
                 }
             })
         }, SPLASH_DURATION.toLong())
@@ -78,7 +60,25 @@ class SplashActivity : AppCompatActivity() {
             intent = Intent(this@SplashActivity, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
             startActivity(intent)
-        } else return
+            finish()
+        } else {
+            setContentView(R.layout.activity_splash_afterload)
+            val regButton: Button = splash_reg_button
+            val loginButton: Button = splash_login_button
+            regButton.setOnClickListener {
+                intent = Intent(this@SplashActivity, RegistrationActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+                startActivity(intent)
+                finish()
+            }
+            loginButton.setOnClickListener {
+                intent = Intent(this@SplashActivity, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+                startActivity(intent)
+                finish()
+            }
+            return
+        }
     }
 
     override fun onResume() {

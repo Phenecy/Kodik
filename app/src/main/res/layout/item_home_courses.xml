@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/home_course_title"
+        android:layout_width="206dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="31dp"
+        android:fontFamily="@font/rubik_medium"
+        android:lineHeight="24sp"
+        android:text="@string/home_courses_sample"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/home_course_card"
+        android:layout_width="380dp"
+        android:layout_height="95dp"
+        app:cardBackgroundColor="#C4C4C4"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_course_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

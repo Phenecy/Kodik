@@ -5,7 +5,7 @@
     android:id="@+id/splashLayoutAfter"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity">
+    tools:context=".activities.SplashActivity">
 
     <TextView
         android:id="@+id/splash_text_view"
