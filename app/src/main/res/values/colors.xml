@@ -26,6 +26,7 @@
     <color name="dark_blue">#1A237E</color>
     <color name="light_green">#69F0AE</color>
     <color name="light_gray">#E0E0E0</color>
+    <color name="dark_gray">#575757</color>
 
     <color name="default_background">#EEEEEE</color>
 
