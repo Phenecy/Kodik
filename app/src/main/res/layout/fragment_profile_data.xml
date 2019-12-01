@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/profile_name_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_medium"
+                android:text="@string/registration_name_text_view"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_marginStart="31dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/profile_name_edit_text"
+                android:layout_width="360dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/ef_round_corner_edit_text"
+                android:fontFamily="@font/rubik"
+                android:paddingStart="15dp"
+                android:text="Петя"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_name_text_view" />
+
+            <TextView
+                android:id="@+id/profile_email_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/rubik_medium"
+                android:text="@string/registration_email_text_view"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_marginStart="31dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_name_edit_text" />
+
+            <EditText
+                android:id="@+id/profile_email_edit_text"
+                android:layout_width="360dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/ef_round_corner_edit_text"
+                android:fontFamily="@font/rubik"
+                android:paddingStart="15dp"
+                android:text="petya@mail.ru"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_email_text_view" />
+
+            <TextView
+                android:id="@+id/profile_password_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/rubik_medium"
+                android:text="@string/registration_password_text_view"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_marginStart="31dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_email_edit_text" />
+
+            <EditText
+                android:id="@+id/profile_password_edit_text"
+                android:layout_width="360dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/ef_round_corner_edit_text"
+                android:fontFamily="@font/rubik"
+                android:inputType="textPassword"
+                android:paddingStart="15dp"
+                android:text="1234567"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_password_text_view" />
+
+            <Button
+                android:id="@+id/profile_change_button"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ef_round_corner_button_green_gradient"
+                android:fontFamily="@font/rubik"
+                android:text="@string/profile_change"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="55dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_password_edit_text" />
+
+            <Button
+                android:id="@+id/profile_exit_button"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="38dp"
+                android:background="@drawable/ef_round_corner_button_empty"
+                android:fontFamily="@font/rubik"
+                android:text="@string/profile_exit"
+                android:textAlignment="center"
+                android:textColor="@color/registration_main_color"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.509"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_change_button" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,4 +17,11 @@
     <string name="home_title">КУРСЫ</string>
     <string name="notifications_title">УВЕДОМЛЕНИЯ</string>
     <string name="notification_text">Поздравляем! Ты получил награду \"<b>Знаток</b>\"!</string>
+    <string name="profile_title">МОЙ ПРОФИЛЬ</string>
+    <string name="profile_change_photo">Изменить фото</string>
+    <string name="profile_data">Данные</string>
+    <string name="profile_change">Изменить</string>
+    <string name="profile_exit">Выйти</string>
+    <string name="profile_my_trophy">Мои награды</string>
+    <string name="profile_trophy_sample">НАГРАДА</string>
 </resources>
