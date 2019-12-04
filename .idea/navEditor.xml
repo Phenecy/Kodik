@@ -78,6 +78,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="nav_courses_card">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="601" />
+                            <option name="y" value="10" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="nav_home">
                     <value>
                       <LayoutPositions>

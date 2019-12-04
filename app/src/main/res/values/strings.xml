@@ -24,4 +24,7 @@
     <string name="profile_exit">Выйти</string>
     <string name="profile_my_trophy">Мои награды</string>
     <string name="profile_trophy_sample">НАГРАДА</string>
+    <string name="lesson_card_button">Дальше</string>
+    <string name="wrong_answer">Неправильно! \nПопробуй ещё:)</string>
+    <string name="correct_answer">Выполнено! Молодец!</string>
 </resources>

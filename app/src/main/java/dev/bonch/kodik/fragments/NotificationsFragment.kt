@@ -8,9 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.bonch.kodik.R
-import dev.bonch.kodik.adapters.CoursesAdapter
 import dev.bonch.kodik.adapters.NotificationsAdapter
-import dev.bonch.kodik.models.Course
 import dev.bonch.kodik.models.Notification
 
 private lateinit var adapter: NotificationsAdapter
