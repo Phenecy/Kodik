@@ -30,7 +30,7 @@ class CoursesAdapter(private val coursesList: MutableList<Course>) :
                 val bundle = Bundle()
                 bundle.putString("name_course", coursesList[position].courseTitle)
 
-                (context as MainActivity).onLessonChairFragment()
+                (context as MainActivity).onLessonChairFragmentFromHome()
             }
         }
     }

@@ -13,18 +13,20 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.bonch.kodik.R
 import dev.bonch.kodik.activities.MainActivity
 
-class LessonChairFragment: Fragment() {
+class ThemesChairFragment: Fragment() {
 
     private lateinit var chairLessonRec: RecyclerView
+    private lateinit var toast: Toast
+    private lateinit var textToast: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_lesson_chair, container, false)
+        val view = inflater.inflate(R.layout.fragment_themes_chair, container, false)
 
-        Toast.makeText(LessonChairFragment@context, "fsdfs", Toast.LENGTH_LONG).show()
+        initView()
 
         chairLessonRec = view.findViewById(R.id.lesson_list_recycler)
         chairLessonRec.layoutManager = LinearLayoutManager(container!!.context)
@@ -33,6 +35,14 @@ class LessonChairFragment: Fragment() {
         return view
     }
 
+    private fun initView() {
+
+        val toastView = layoutInflater.inflate(R.layout.toast_view, null)
+        textToast = toastView.findViewById(R.id.toast_text)
+        toast = Toast(LessonCardFragment@context)
+        toast.duration = Toast.LENGTH_LONG
+        toast.view = toastView
+    }
 
 
     inner class ChairAdapter: RecyclerView.Adapter<ChairAdapter.ChairVH>() {
@@ -56,11 +66,11 @@ class LessonChairFragment: Fragment() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChairVH {
             val view: View
             view = if (viewType == 0) LayoutInflater.from(parent.context).inflate(
-                R.layout.item_locked_lesson,
+                R.layout.item_lock_theme,
                 parent,
                 false)
             else LayoutInflater.from(parent.context).inflate(
-                R.layout.item_current_lesson,
+                R.layout.item_open_theme,
                 parent,
                 false)
             return ChairVH(view)
@@ -74,7 +84,8 @@ class LessonChairFragment: Fragment() {
                 }
                 holder.itemView.setOnClickListener{
                     if (holder.itemViewType == 0) {
-                        Toast.makeText(LessonChairFragment@context, "fdfsd,", Toast.LENGTH_LONG).show()
+                        textToast.text = getString(R.string.locked_level)
+                        toast.show()
                     }
                     else {
                         val bundle = Bundle()
