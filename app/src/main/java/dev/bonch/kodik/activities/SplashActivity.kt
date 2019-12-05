@@ -24,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
-    private val SPLASH_DURATION = 2500
+    private val SPLASH_DURATION = 500
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

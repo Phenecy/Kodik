@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import dev.bonch.kodik.R
-import kotlinx.android.synthetic.main.item_lesson_card_theory.view.*
 
 class LessonCardFragment: Fragment() {
 
@@ -27,8 +26,9 @@ class LessonCardFragment: Fragment() {
 
         initView()
 
-        titleCourseTw = view!!.findViewById(R.id.courses_text_view)
-        lessonPager = view!!.findViewById(R.id.lesson_view_pager)
+        titleCourseTw = view.findViewById(R.id.courses_text_view)
+
+        lessonPager = view.findViewById(R.id.lesson_view_pager)
         lessonPager.adapter = LessonsAdapter()
 
         val bundle: Bundle? = arguments
@@ -36,7 +36,6 @@ class LessonCardFragment: Fragment() {
         if (bundle !== null) {
             titleCourseTw.text = bundle.getString("name_course").toString()
         }
-
 
         return view
     }
@@ -46,6 +45,7 @@ class LessonCardFragment: Fragment() {
         val toastView = layoutInflater.inflate(R.layout.toast_view, null)
         textToast = toastView.findViewById(R.id.toast_text)
         toast = Toast(LessonCardFragment@context)
+        toast.duration = Toast.LENGTH_LONG
         toast.view = toastView
     }
 

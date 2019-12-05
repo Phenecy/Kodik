@@ -27,4 +27,6 @@
     <string name="lesson_card_button">Дальше</string>
     <string name="wrong_answer">Неправильно! \nПопробуй ещё:)</string>
     <string name="correct_answer">Выполнено! Молодец!</string>
+    <string name="locked_level">Эта тема пока недоступна\nизучи предыдущие, чтобы открыть её:)</string>
+    <string name="themes_of_course">ТЕМЫ КУРСА</string>
 </resources>
