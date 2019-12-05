@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="15dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -31,7 +30,7 @@
 
             <EditText
                 android:id="@+id/profile_name_edit_text"
-                android:layout_width="360dp"
+                android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/ef_round_corner_edit_text"
@@ -39,6 +38,8 @@
                 android:paddingStart="15dp"
                 android:text="Петя"
                 android:textSize="18sp"
+                app:layout_constraintWidth_percent="0.90"
+                app:layout_constraintWidth_max="360dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profile_name_text_view" />
@@ -58,7 +59,7 @@
 
             <EditText
                 android:id="@+id/profile_email_edit_text"
-                android:layout_width="360dp"
+                android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/ef_round_corner_edit_text"
@@ -66,6 +67,8 @@
                 android:paddingStart="15dp"
                 android:text="petya@mail.ru"
                 android:textSize="18sp"
+                app:layout_constraintWidth_percent="0.91"
+                app:layout_constraintWidth_max="360dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profile_email_text_view" />
@@ -85,7 +88,7 @@
 
             <EditText
                 android:id="@+id/profile_password_edit_text"
-                android:layout_width="360dp"
+                android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/ef_round_corner_edit_text"
@@ -94,13 +97,15 @@
                 android:paddingStart="15dp"
                 android:text="1234567"
                 android:textSize="18sp"
+                app:layout_constraintWidth_percent="0.91"
+                app:layout_constraintWidth_max="360dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profile_password_text_view" />
 
             <Button
                 android:id="@+id/profile_change_button"
-                android:layout_width="360dp"
+                android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:background="@drawable/ef_round_corner_button_green_gradient"
                 android:fontFamily="@font/rubik"
@@ -110,13 +115,15 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_marginTop="55dp"
+                app:layout_constraintWidth_percent="0.91"
+                app:layout_constraintWidth_max="360dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profile_password_edit_text" />
 
             <Button
                 android:id="@+id/profile_exit_button"
-                android:layout_width="360dp"
+                android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="38dp"
                 android:background="@drawable/ef_round_corner_button_empty"
@@ -126,6 +133,8 @@
                 android:textColor="@color/registration_main_color"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintWidth_percent="0.91"
+                app:layout_constraintWidth_max="360dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.509"
                 app:layout_constraintStart_toStartOf="parent"
