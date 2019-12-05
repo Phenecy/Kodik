@@ -23,7 +23,11 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation_bar.setupWithNavController(navController)
     }
 
-    fun onText(arguments: Bundle?) {
-        navController.navigate(R.id.action_nav_home_to_nav_courses_card, arguments)
+    fun onLessonCardFragment(arguments: Bundle?) {
+        navController.navigate(R.id.action_nav_fragment_chair_to_nav_courses_card, arguments)
+    }
+
+    fun onLessonChairFragment() {
+        navController.navigate(R.id.action_nav_courses_to_nav_fragment_chair)
     }
 }

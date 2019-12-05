@@ -9,17 +9,17 @@
         android:id="@+id/nav_home"
         android:name="dev.bonch.kodik.fragments.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_nav_home_to_nav_courses_card"
-            app:destination="@id/nav_courses_card" />
-    </fragment>
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_courses"
         android:name="dev.bonch.kodik.fragments.CoursesFragment"
         android:label="Courses"
-        tools:layout="@layout/fragment_courses" />
+        tools:layout="@layout/fragment_courses" >
+        <action
+            android:id="@+id/action_nav_courses_to_nav_fragment_chair"
+            app:destination="@id/nav_fragment_chair" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_notifications"
@@ -37,5 +37,14 @@
         android:id="@+id/nav_courses_card"
         android:name="dev.bonch.kodik.fragments.LessonCardFragment"
         tools:layout="@layout/fragment_lesson_card"/>
+
+    <fragment
+        android:id="@+id/nav_fragment_chair"
+        android:name="dev.bonch.kodik.fragments.LessonChairFragment"
+        tools:layout="@layout/fragment_lesson_chair">
+        <action
+            android:id="@+id/action_nav_fragment_chair_to_nav_courses_card"
+            app:destination="@id/nav_courses_card" />
+    </fragment>
 
 </navigation>

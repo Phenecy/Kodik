@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.view.marginBottom
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -27,8 +28,9 @@ class LessonCardFragment: Fragment() {
 
         initView()
 
-        titleCourseTw = view!!.findViewById(R.id.courses_text_view)
-        lessonPager = view!!.findViewById(R.id.lesson_view_pager)
+        titleCourseTw = view.findViewById(R.id.courses_text_view)
+
+        lessonPager = view.findViewById(R.id.lesson_view_pager)
         lessonPager.adapter = LessonsAdapter()
 
         val bundle: Bundle? = arguments

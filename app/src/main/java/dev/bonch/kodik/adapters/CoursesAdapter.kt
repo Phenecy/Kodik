@@ -26,12 +26,11 @@ class CoursesAdapter(private val coursesList: MutableList<Course>) :
     override fun onBindViewHolder(holder: CoursesHolder, position: Int) {
         holder.itemView.run {
             home_course_title.text = coursesList[position].courseTitle
-
             holder.itemView.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString("name_course", coursesList[position].courseTitle)
 
-                (context as MainActivity).onText(bundle)
+                (context as MainActivity).onLessonChairFragment()
             }
         }
     }
