@@ -39,15 +39,24 @@
 
     <fragment
         android:id="@+id/nav_courses_card"
-        android:name="dev.bonch.kodik.fragments.LessonCardFragment"
-        tools:layout="@layout/fragment_lesson_card"/>
+        android:name="dev.bonch.kodik.fragments.LessonPagerCardFragment"
+        tools:layout="@layout/fragment_lesson_pager_card"/>
 
     <fragment
         android:id="@+id/nav_fragment_chair"
-        android:name="dev.bonch.kodik.fragments.ThemesChairFragment"
-        tools:layout="@layout/fragment_themes_chair">
+        android:name="dev.bonch.kodik.fragments.ClassesChairFragment"
+        tools:layout="@layout/fragment_classes_chair">
         <action
-            android:id="@+id/action_nav_fragment_chair_to_nav_courses_card"
+            android:id="@+id/action_nav_fragment_chair_to_nav_fragment_class_cards"
+            app:destination="@id/nav_fragment_class_cards" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_fragment_class_cards"
+        android:name="dev.bonch.kodik.fragments.LessonsCardsFragment"
+        tools:layout="@layout/fragment_lessons_cards">
+        <action
+            android:id="@+id/action_nav_fragment_class_cards_to_nav_courses_card"
             app:destination="@id/nav_courses_card" />
     </fragment>
 

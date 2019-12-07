@@ -43,5 +43,7 @@
     <color name="registration_button_color">#70AE6E</color>
     <color name="unchecked_icon_color">#757575</color>
 
+    <color name="class_open_card_color">#EABE7C</color>
+    <color name="class_locked_card_color">#80EABE7C</color>
 </resources>
 

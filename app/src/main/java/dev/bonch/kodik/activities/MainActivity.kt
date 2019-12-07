@@ -1,21 +1,24 @@
 package dev.bonch.kodik.activities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
+import com.google.firebase.auth.FirebaseAuth
 import dev.bonch.kodik.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setupNavigationDrawer()
 
+        setupNavigationDrawer()
     }
 
     private fun setupNavigationDrawer() {
@@ -24,14 +27,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onLessonCardFragment(arguments: Bundle?) {
-        navController.navigate(R.id.action_nav_fragment_chair_to_nav_courses_card, arguments)
+        navController.navigate(R.id.action_nav_fragment_class_cards_to_nav_courses_card, arguments)
     }
 
-    fun onLessonChairFragmentFromHome() {
-        navController.navigate(R.id.action_nav_home_to_nav_fragment_chair)
+    fun onLessonChairFragment(arguments: Bundle?) {
+        navController.navigate(R.id.action_nav_home_to_nav_fragment_chair, arguments)
     }
 
-    fun onLessonChairFragmentFromMyCourses() {
-        navController.navigate(R.id.action_nav_courses_to_nav_fragment_chair)
+    fun onLessonChairFragmentFromMyCourses(arguments: Bundle?) {
+        navController.navigate(R.id.action_nav_courses_to_nav_fragment_chair, arguments)
+    }
+
+    fun onClassCardsFragment(arguments: Bundle?) {
+        navController.navigate(R.id.action_nav_fragment_chair_to_nav_fragment_class_cards, arguments)
     }
 }

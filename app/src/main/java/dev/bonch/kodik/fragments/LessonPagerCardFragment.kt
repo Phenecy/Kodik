@@ -1,32 +1,32 @@
 package dev.bonch.kodik.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import dev.bonch.kodik.R
 
-class LessonCardFragment: Fragment() {
+class LessonPagerCardFragment : Fragment() {
 
     private lateinit var lessonPager: ViewPager2
-    private lateinit var titleCourseTw: TextView
+    private lateinit var titleTw: TextView
     private lateinit var toast: Toast
     private lateinit var textToast: TextView
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_lesson_card, container, false)
+        val view = inflater.inflate(R.layout.fragment_lesson_pager_card, container, false)
 
-        initView()
 
-        titleCourseTw = view.findViewById(R.id.courses_text_view)
+
+        titleTw = view.findViewById(R.id.title_pager)
 
         lessonPager = view.findViewById(R.id.lesson_view_pager)
         lessonPager.adapter = LessonsAdapter()
@@ -34,8 +34,11 @@ class LessonCardFragment: Fragment() {
         val bundle: Bundle? = arguments
 
         if (bundle !== null) {
-            titleCourseTw.text = bundle.getString("name_course").toString()
+            titleTw.text = bundle.getString("title_pager").toString()
+            lessonPager.setCurrentItem(bundle.getInt("number_lesson"), false)
         }
+
+        initView()
 
         return view
     }
@@ -44,12 +47,12 @@ class LessonCardFragment: Fragment() {
 
         val toastView = layoutInflater.inflate(R.layout.toast_view, null)
         textToast = toastView.findViewById(R.id.toast_text)
-        toast = Toast(LessonCardFragment@context)
+        toast = Toast(LessonCardFragment@ context)
         toast.duration = Toast.LENGTH_LONG
         toast.view = toastView
     }
 
-    inner class LessonsAdapter: RecyclerView.Adapter<LessonsAdapter.PagerVH>() {
+    inner class LessonsAdapter : RecyclerView.Adapter<LessonsAdapter.PagerVH>() {
 
         private var titlse = arrayListOf(
             "Знакомьтесь: HTML!",
@@ -74,13 +77,15 @@ class LessonCardFragment: Fragment() {
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerVH {
-           return if (viewType == 0) {
-               val view = LayoutInflater.from(parent.context).inflate(R.layout.item_lesson_card_theory, parent, false)
-               TheoryViewHolder(view)
-           } else {
-               val view = LayoutInflater.from(parent.context).inflate(R.layout.item_lesson_card_test, parent, false)
-               TestViewHolder(view)
-           }
+            return if (viewType == 0) {
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_lesson_card_theory, parent, false)
+                TheoryViewHolder(view)
+            } else {
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_lesson_card_test, parent, false)
+                TestViewHolder(view)
+            }
         }
 
         override fun getItemViewType(position: Int): Int {
@@ -95,7 +100,7 @@ class LessonCardFragment: Fragment() {
             holder.bind()
         }
 
-        inner class TheoryViewHolder(view: View): PagerVH(view) {
+        inner class TheoryViewHolder(view: View) : PagerVH(view) {
             private val titleLessonTw = view.findViewById<TextView>(R.id.lesson_title)
             private val textLessonTw = view.findViewById<TextView>(R.id.lesson_text)
             private val nextLessonBtn = view.findViewById<Button>(R.id.next_lesson_button)
@@ -110,7 +115,7 @@ class LessonCardFragment: Fragment() {
             }
         }
 
-        inner class TestViewHolder(view: View): PagerVH(view) {
+        inner class TestViewHolder(view: View) : PagerVH(view) {
             private val titleLessonTw = view.findViewById<TextView>(R.id.lesson_title)
             private val nextLessonBtn = view.findViewById<Button>(R.id.next_lesson_button)
             private val answerChoiceRg = view.findViewById<RadioGroup>(R.id.answer_choice)
@@ -138,4 +143,5 @@ class LessonCardFragment: Fragment() {
         val currentLesson = lessonPager.currentItem
         lessonPager.setCurrentItem(currentLesson + 1, true)
     }
+
 }

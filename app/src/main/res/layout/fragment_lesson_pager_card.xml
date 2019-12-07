@@ -6,15 +6,13 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/courses_text_view"
+        android:id="@+id/title_pager"
         android:layout_width="330dp"
         android:layout_height="34dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/rubik_bold"
         android:gravity="top"
-        android:hint="@string/courses_title"
-        android:text="@string/courses_title"
         android:textAppearance="@style/RegistrationTheme"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

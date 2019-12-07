@@ -8,19 +8,37 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.bonch.kodik.R
+import dev.bonch.kodik.activities.MainActivity
 import dev.bonch.kodik.adapters.BannersAdapter
 import dev.bonch.kodik.adapters.CoursesAdapter
 import dev.bonch.kodik.models.Banner
 import dev.bonch.kodik.models.Course
+import kotlinx.android.synthetic.main.item_home_courses.view.*
+
 
 private lateinit var bannersAdapter: BannersAdapter
-private lateinit var coursesAdapter: CoursesAdapter
 private lateinit var coursesRecycler: RecyclerView
 private lateinit var bannersRecycler: RecyclerView
-private lateinit var coursesLinearLayoutManager: LinearLayoutManager
 private lateinit var bannersLinearLayoutManager: LinearLayoutManager
 private var coursesList: MutableList<Course> = Course.CoursesController().coursesList
 private var bannersList: MutableList<Banner> = Banner.BannersController().bannersList
+
+private val adapter = object: CoursesAdapter(coursesList) {
+    override fun onBindViewHolder(holder: CoursesHolder, position: Int) {
+        super.onBindViewHolder(holder, position)
+
+        holder.itemView.run {
+            home_course_title.text = coursesList[position].courseTitle
+
+            holder.itemView.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString("name_course", coursesList[position].courseTitle)
+
+                (context as MainActivity).onLessonChairFragment(bundle)
+            }
+        }
+    }
+}
 
 class HomeFragment : Fragment() {
     override fun onCreateView(
@@ -28,19 +46,19 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        bannersAdapter = BannersAdapter(bannersList)
-        coursesAdapter = CoursesAdapter(coursesList)
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        coursesLinearLayoutManager = LinearLayoutManager(container!!.context)
-        coursesLinearLayoutManager.isSmoothScrollbarEnabled = true
+
+        bannersAdapter = BannersAdapter(bannersList)
         coursesRecycler = view.findViewById(R.id.home_main_recycler_view)
-        coursesRecycler.layoutManager = coursesLinearLayoutManager
-        coursesRecycler.adapter = coursesAdapter
+        coursesRecycler.layoutManager = LinearLayoutManager(HomeFragment@context)
+        coursesRecycler.adapter = adapter
+
         bannersLinearLayoutManager = LinearLayoutManager(container!!.context, LinearLayoutManager.HORIZONTAL, false)
         bannersLinearLayoutManager.isSmoothScrollbarEnabled = true
         bannersRecycler = view.findViewById(R.id.home_banner_recycler_view)
         bannersRecycler.layoutManager = bannersLinearLayoutManager
         bannersRecycler.adapter = bannersAdapter
+
         return view
     }
 }
