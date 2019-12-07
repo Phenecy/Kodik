@@ -23,7 +23,7 @@
 
     <EditText
         android:id="@+id/registration_name_edit_text"
-        android:layout_width="380dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
@@ -38,13 +38,15 @@
         android:shadowColor="@color/registration_main_color"
         android:textColorHint="@color/registration_main_color"
         android:textSize="18sp"
+        app:layout_constraintWidth_percent="0.91"
+        app:layout_constraintWidth_max="360dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registration_text_view"
         tools:targetApi="p" />
 
     <EditText
         android:id="@+id/login_email_edit_text"
-        android:layout_width="380dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
@@ -58,13 +60,15 @@
         android:shadowColor="@color/registration_main_color"
         android:textColorHint="@color/registration_main_color"
         android:textSize="18sp"
+        app:layout_constraintWidth_percent="0.91"
+        app:layout_constraintWidth_max="360dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registration_name_edit_text"
         tools:targetApi="p" />
 
     <EditText
         android:id="@+id/login_password_edit_text"
-        android:layout_width="380dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
@@ -79,13 +83,15 @@
         android:shadowColor="@color/registration_main_color"
         android:textColorHint="@color/registration_main_color"
         android:textSize="18sp"
+        app:layout_constraintWidth_percent="0.91"
+        app:layout_constraintWidth_max="360dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_email_edit_text"
         tools:targetApi="p" />
 
     <EditText
         android:id="@+id/registration_password_repeat_edit_text"
-        android:layout_width="380dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
@@ -97,6 +103,8 @@
         android:importantForAutofill="no"
         android:inputType="textPassword"
         android:lineHeight="24sp"
+        app:layout_constraintWidth_percent="0.91"
+        app:layout_constraintWidth_max="360dp"
         android:shadowColor="@color/registration_main_color"
         android:textColorHint="@color/registration_main_color"
         android:textSize="18sp"
@@ -106,7 +114,7 @@
 
     <Button
         android:id="@+id/login_button"
-        android:layout_width="360dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="@drawable/ef_round_corner_button_green_gradient"
         android:fontFamily="@font/rubik"
@@ -115,6 +123,8 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintWidth_percent="0.91"
+        app:layout_constraintWidth_max="360dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
