@@ -2,25 +2,17 @@ package dev.bonch.kodik.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentPagerAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import dev.bonch.kodik.R
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlin.math.abs
 
-class LessonCardFragment : Fragment() {
+class LessonPagerCardFragment : Fragment() {
 
     private lateinit var lessonPager: ViewPager2
-    private lateinit var titleCourseTw: TextView
+    private lateinit var titleTw: TextView
     private lateinit var toast: Toast
     private lateinit var textToast: TextView
 
@@ -30,11 +22,11 @@ class LessonCardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_lesson_card, container, false)
+        val view = inflater.inflate(R.layout.fragment_lesson_pager_card, container, false)
 
-        initView()
 
-        titleCourseTw = view.findViewById(R.id.courses_text_view)
+
+        titleTw = view.findViewById(R.id.title_pager)
 
         lessonPager = view.findViewById(R.id.lesson_view_pager)
         lessonPager.adapter = LessonsAdapter()
@@ -42,9 +34,11 @@ class LessonCardFragment : Fragment() {
         val bundle: Bundle? = arguments
 
         if (bundle !== null) {
-            titleCourseTw.text = bundle.getString("name_course").toString()
+            titleTw.text = bundle.getString("title_pager").toString()
             lessonPager.setCurrentItem(bundle.getInt("number_lesson"), false)
         }
+
+        initView()
 
         return view
     }

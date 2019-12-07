@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.bonch.kodik.R
 import dev.bonch.kodik.activities.MainActivity
-import kotlinx.android.synthetic.main.item_class_open_card.view.*
+import kotlinx.android.synthetic.main.item_lesson_open_card.view.*
 
-class ClassCardsFragment: Fragment() {
+class LessonsCardsFragment: Fragment() {
 
     private lateinit var cardsRecycler: RecyclerView
     private lateinit var titleFragmentTw: TextView
@@ -28,13 +28,13 @@ class ClassCardsFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_class_cards, container, false)
+        val view = inflater.inflate(R.layout.fragment_lessons_cards, container, false)
 
         titleFragmentTw = view.findViewById(R.id.title_class_card)
 
         val bundle: Bundle? = arguments
 
-        if (bundle !== null) nameCourse = bundle.getString("name_course")!!.toUpperCase()
+        if (bundle !== null) nameCourse = bundle.getString("title_pager")!!.toUpperCase()
         titleFragmentTw.text = nameCourse
 
         cardsRecycler = view.findViewById(R.id.recycler_class_card)
@@ -70,12 +70,12 @@ class ClassCardsFragment: Fragment() {
             val view: View =
                 if (viewType == 1 || viewType == 2)
                     LayoutInflater.from(parent.context).inflate(
-                        R.layout.item_class_open_card,
+                        R.layout.item_lesson_open_card,
                         parent,
                         false
                     )
                 else LayoutInflater.from(parent.context).inflate(
-                    R.layout.item_class_locked_card,
+                    R.layout.item_lesson_locked_card,
                     parent,
                     false
                 )
@@ -107,7 +107,7 @@ class ClassCardsFragment: Fragment() {
                 else {
                     setOnClickListener {
                         val bundle = Bundle()
-                        bundle.putString("name_course", nameCourse)
+                        bundle.putString("title_pager", nameCourse)
                         bundle.putInt("number_lesson", position)
                         (context as MainActivity).onLessonCardFragment(bundle)
                     }

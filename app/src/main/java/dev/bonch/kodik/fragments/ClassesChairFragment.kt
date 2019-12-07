@@ -1,5 +1,6 @@
 package dev.bonch.kodik.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,13 +19,20 @@ class ClassesChairFragment: Fragment() {
     private lateinit var chairLessonRec: RecyclerView
     private lateinit var toast: Toast
     private lateinit var textToast: TextView
+    private lateinit var titleTw: TextView
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_classes_chair, container, false)
+
+        titleTw = view.findViewById(R.id.title_classes_chair)
+
+        val bundle: Bundle? = arguments
+        if (bundle !== null) titleTw.text = "${getString(R.string.themes_of_course)} ${bundle.getString("name_course")!!.toUpperCase()}"
 
         initView()
 
@@ -66,11 +74,11 @@ class ClassesChairFragment: Fragment() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChairVH {
             val view: View
             view = if (viewType == 0) LayoutInflater.from(parent.context).inflate(
-                R.layout.item_lock_theme,
+                R.layout.item_lock_class,
                 parent,
                 false)
             else LayoutInflater.from(parent.context).inflate(
-                R.layout.item_open_theme,
+                R.layout.item_open_class,
                 parent,
                 false)
             return ChairVH(view)
@@ -90,7 +98,7 @@ class ClassesChairFragment: Fragment() {
 
                     else {
                         val bundle = Bundle()
-                        bundle.putString("name_course", test[position])
+                        bundle.putString("title_pager", test[position])
                         (context as MainActivity).onClassCardsFragment(bundle)
                     }
                 }

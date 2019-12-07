@@ -19,12 +19,9 @@ import kotlinx.android.synthetic.main.item_home_courses.view.*
 private lateinit var bannersAdapter: BannersAdapter
 private lateinit var coursesRecycler: RecyclerView
 private lateinit var bannersRecycler: RecyclerView
-private lateinit var coursesLinearLayoutManager: LinearLayoutManager
 private lateinit var bannersLinearLayoutManager: LinearLayoutManager
 private var coursesList: MutableList<Course> = Course.CoursesController().coursesList
 private var bannersList: MutableList<Banner> = Banner.BannersController().bannersList
-
-private lateinit var linearLayoutManager: LinearLayoutManager
 
 private val adapter = object: CoursesAdapter(coursesList) {
     override fun onBindViewHolder(holder: CoursesHolder, position: Int) {
@@ -51,12 +48,9 @@ class HomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        linearLayoutManager = LinearLayoutManager(container!!.context)
-        linearLayoutManager.isSmoothScrollbarEnabled = true
-
         bannersAdapter = BannersAdapter(bannersList)
         coursesRecycler = view.findViewById(R.id.home_main_recycler_view)
-        coursesRecycler.layoutManager = coursesLinearLayoutManager
+        coursesRecycler.layoutManager = LinearLayoutManager(HomeFragment@context)
         coursesRecycler.adapter = adapter
 
         bannersLinearLayoutManager = LinearLayoutManager(container!!.context, LinearLayoutManager.HORIZONTAL, false)
