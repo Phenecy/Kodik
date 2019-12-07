@@ -20,7 +20,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/home_course_card"
-        android:layout_width="380dp"
+        android:layout_width="0dp"
         android:layout_height="95dp"
         app:cardBackgroundColor="#C4C4C4"
         app:cardCornerRadius="20dp"

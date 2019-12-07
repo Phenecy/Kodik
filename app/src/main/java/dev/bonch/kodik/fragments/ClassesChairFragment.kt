@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.bonch.kodik.R
 import dev.bonch.kodik.activities.MainActivity
 
-class ThemesChairFragment: Fragment() {
+class ClassesChairFragment: Fragment() {
 
     private lateinit var chairLessonRec: RecyclerView
     private lateinit var toast: Toast
@@ -24,7 +24,7 @@ class ThemesChairFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_themes_chair, container, false)
+        val view = inflater.inflate(R.layout.fragment_classes_chair, container, false)
 
         initView()
 
@@ -87,10 +87,11 @@ class ThemesChairFragment: Fragment() {
                         textToast.text = getString(R.string.locked_level)
                         toast.show()
                     }
+
                     else {
                         val bundle = Bundle()
                         bundle.putString("name_course", test[position])
-                        (context as MainActivity).onLessonCardFragment(bundle)
+                        (context as MainActivity).onClassCardsFragment(bundle)
                     }
                 }
             }
