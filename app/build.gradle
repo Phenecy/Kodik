@@ -55,6 +55,7 @@ dependencies {
     implementation 'com.android.support:cardview-v7:27.1.1'
 
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -40,7 +40,7 @@
 
     <Button
         android:id="@+id/splash_reg_button"
-        android:layout_width="360dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="450dp"
         android:background="@drawable/ef_round_corner_button_green_gradient"
@@ -50,13 +50,15 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintWidth_percent="0.91"
+        app:layout_constraintWidth_max="360dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/splash_login_button"
-        android:layout_width="360dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="36dp"
         android:background="@drawable/ef_round_corner_button_empty"
@@ -66,6 +68,8 @@
         android:textColor="@color/registration_main_color"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintWidth_percent="0.91"
+        app:layout_constraintWidth_max="360dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"

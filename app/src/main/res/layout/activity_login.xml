@@ -23,9 +23,8 @@
 
     <EditText
         android:id="@+id/login_email_edit_text"
-        android:layout_width="380dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="150dp"
         android:backgroundTint="@color/registration_main_color"
         android:ems="10"
@@ -37,16 +36,18 @@
         android:shadowColor="@color/registration_main_color"
         android:textColorHint="@color/registration_main_color"
         android:textSize="18sp"
+        app:layout_constraintWidth_percent="0.91"
+        app:layout_constraintWidth_max="360dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registration_text_view"
         tools:targetApi="p" />
 
     <EditText
         android:id="@+id/login_password_edit_text"
-        android:layout_width="380dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:backgroundTint="@color/registration_main_color"
         android:ems="10"
@@ -58,13 +59,16 @@
         android:shadowColor="@color/registration_main_color"
         android:textColorHint="@color/registration_main_color"
         android:textSize="18sp"
+        app:layout_constraintWidth_percent="0.91"
+        app:layout_constraintWidth_max="360dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_email_edit_text"
         tools:targetApi="p" />
 
     <Button
         android:id="@+id/login_button"
-        android:layout_width="360dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/ef_round_corner_button_green_gradient"
@@ -74,15 +78,19 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintWidth_percent="0.91"
+        app:layout_constraintWidth_max="360dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_password_edit_text" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/login_google_sign_in"
-        android:layout_width="360dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        app:layout_constraintWidth_percent="0.91"
+        app:layout_constraintWidth_max="360dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_button" />
