@@ -13,8 +13,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import dev.bonch.kodik.R
 import kotlinx.android.synthetic.main.activity_splash_afterload.*
+import java.net.URL
 
 class SplashActivity : AppCompatActivity() {
 

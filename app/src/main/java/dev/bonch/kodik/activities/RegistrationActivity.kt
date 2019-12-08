@@ -1,15 +1,26 @@
 package dev.bonch.kodik.activities
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestoreSettings
 import dev.bonch.kodik.R
+import dev.bonch.kodik.models.User
 import kotlinx.android.synthetic.main.activity_registration.*
+import java.net.URI
 
 class RegistrationActivity : AppCompatActivity() {
 
@@ -21,6 +32,7 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var alreadyHaveAccountTextView: TextView
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +43,7 @@ class RegistrationActivity : AppCompatActivity() {
         clickListeners()
 
         auth = FirebaseAuth.getInstance()
-
+        db = FirebaseFirestore.getInstance()
     }
 
     private fun initializeViews() {
@@ -54,9 +66,11 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun onClickRegister() {
+        val name = userNameEditText.text.toString().trim()
         val email = emailEditText.text.toString().trim()
         val password = passwordEditText.text.toString().trim()
         val passwordRepeat = passwordRepeatEditText.text.toString().trim()
+
 
         if (email.isEmpty() || password.isEmpty() || passwordRepeat.isEmpty()) {
             return
@@ -66,8 +80,21 @@ class RegistrationActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     intent = Intent(this@RegistrationActivity, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
-                    startActivity(intent)
-                    finish()
+
+                    val user = FirebaseAuth.getInstance().currentUser
+                    val profileUpdates = UserProfileChangeRequest.Builder()
+                        .setDisplayName(name)
+                        .build()
+
+                    user?.updateProfile(profileUpdates)
+                        ?.addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Log.d("PROFILE UPDATED", "User profile updated.")
+                            }
+                        }
+
+                    saveUser(name, email, "URI", intent)
+//                    finish()
                 } else {
                     Toast.makeText(applicationContext, "Что-то пошло не так", Toast.LENGTH_SHORT)
                         .show()
@@ -75,6 +102,34 @@ class RegistrationActivity : AppCompatActivity() {
             }
         } else {
             Toast.makeText(applicationContext, "Пароли не совпадают", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun saveUser(name: String, email: String, uri: String, intent: Intent) {
+        if (name.isNotEmpty() && email.isNotEmpty()) {
+            db.collection("users")
+                .document(name.toString())
+                .set(
+                    User(
+                        name,
+                        email,
+                        uri,
+                        mutableListOf(-1),
+                        mutableListOf(-1),
+                        mutableListOf(false, false, false, false, false, false),
+                        mutableListOf(0, 0, 0, 0, 0, 0)
+                    )
+                )
+                .addOnSuccessListener { documentReference ->
+                    startActivity(intent)
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(
+                        this@RegistrationActivity,
+                        "Error: " + e.message,
+                        Toast.LENGTH_SHORT
+                    ).show();
+                }
         }
     }
 }

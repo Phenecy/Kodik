@@ -36,11 +36,11 @@
         android:shadowColor="@color/registration_main_color"
         android:textColorHint="@color/registration_main_color"
         android:textSize="18sp"
-        app:layout_constraintWidth_percent="0.91"
-        app:layout_constraintWidth_max="360dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registration_text_view"
+        app:layout_constraintWidth_max="360dp"
+        app:layout_constraintWidth_percent="0.91"
         tools:targetApi="p" />
 
     <EditText
@@ -59,11 +59,11 @@
         android:shadowColor="@color/registration_main_color"
         android:textColorHint="@color/registration_main_color"
         android:textSize="18sp"
-        app:layout_constraintWidth_percent="0.91"
-        app:layout_constraintWidth_max="360dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_email_edit_text"
+        app:layout_constraintWidth_max="360dp"
+        app:layout_constraintWidth_percent="0.91"
         tools:targetApi="p" />
 
     <Button
@@ -78,22 +78,22 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintWidth_percent="0.91"
-        app:layout_constraintWidth_max="360dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_password_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/login_password_edit_text"
+        app:layout_constraintWidth_max="360dp"
+        app:layout_constraintWidth_percent="0.91" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/login_google_sign_in"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        app:layout_constraintWidth_percent="0.91"
-        app:layout_constraintWidth_max="360dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_button" />
+        app:layout_constraintTop_toBottomOf="@+id/login_button"
+        app:layout_constraintWidth_max="360dp"
+        app:layout_constraintWidth_percent="0.91" />
 
     <TextView
         android:id="@+id/login_registration"
