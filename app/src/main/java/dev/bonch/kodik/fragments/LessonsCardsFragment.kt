@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.bonch.kodik.R
 import dev.bonch.kodik.activities.MainActivity
+import dev.bonch.kodik.models.Course
 import kotlinx.android.synthetic.main.item_lesson_open_card.view.*
 
 class LessonsCardsFragment: Fragment() {
@@ -22,6 +23,8 @@ class LessonsCardsFragment: Fragment() {
     private lateinit var textToast: TextView
 
     private lateinit var nameCourse: String
+
+    private var currentCourse: Course? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +37,10 @@ class LessonsCardsFragment: Fragment() {
 
         val bundle: Bundle? = arguments
 
-        if (bundle !== null) nameCourse = bundle.getString("title_pager")!!.toUpperCase()
+        if (bundle !== null) {
+            nameCourse = bundle.getString("title_pager")!!.toUpperCase()
+            currentCourse = bundle.getParcelable("current_course")
+        }
         titleFragmentTw.text = nameCourse
 
         cardsRecycler = view.findViewById(R.id.recycler_class_card)
@@ -55,7 +61,7 @@ class LessonsCardsFragment: Fragment() {
         toast.view = toastView
     }
 
-    inner class ClassesCardAdapter : RecyclerView.Adapter<ClassesCardAdapter.ClassCardVH>() {
+    inner class ClassesCardAdapter() : RecyclerView.Adapter<ClassesCardAdapter.ClassCardVH>() {
 
         private var titlse = arrayListOf(
             "Знакомьтесь: HTML!",

@@ -1,6 +1,7 @@
 package dev.bonch.kodik.models
 
-import com.google.firebase.database.IgnoreExtraProperties
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.IgnoreExtraProperties
 
 @IgnoreExtraProperties
 data class User(
@@ -10,6 +11,7 @@ data class User(
     var trophies: MutableList<Int> = mutableListOf(),
     var notifications: MutableList<Int> = mutableListOf(),
     var courses: MutableList<Boolean> = mutableListOf(),
-    var coursesProgression: MutableList<Int> = mutableListOf()
+    var coursesProgression: MutableList<Int> = mutableListOf(),
+    var uid: String?
 )
 

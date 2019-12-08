@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import dev.bonch.kodik.R
+import dev.bonch.kodik.models.Course
 
 class LessonPagerCardFragment : Fragment() {
 
@@ -15,6 +16,7 @@ class LessonPagerCardFragment : Fragment() {
     private lateinit var titleTw: TextView
     private lateinit var toast: Toast
     private lateinit var textToast: TextView
+    private var currentCourse: Course? = null
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
@@ -36,6 +38,7 @@ class LessonPagerCardFragment : Fragment() {
         if (bundle !== null) {
             titleTw.text = bundle.getString("title_pager").toString()
             lessonPager.setCurrentItem(bundle.getInt("number_lesson"), false)
+            currentCourse = bundle.getParcelable("current_course")
         }
 
         initView()
@@ -143,5 +146,4 @@ class LessonPagerCardFragment : Fragment() {
         val currentLesson = lessonPager.currentItem
         lessonPager.setCurrentItem(currentLesson + 1, true)
     }
-
 }

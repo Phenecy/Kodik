@@ -12,8 +12,6 @@ import android.widget.Toast
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestoreSettings
@@ -108,7 +106,7 @@ class RegistrationActivity : AppCompatActivity() {
     private fun saveUser(name: String, email: String, uri: String, intent: Intent) {
         if (name.isNotEmpty() && email.isNotEmpty()) {
             db.collection("users")
-                .document(name.toString())
+                .document(email.toString().trim())
                 .set(
                     User(
                         name,
@@ -117,7 +115,8 @@ class RegistrationActivity : AppCompatActivity() {
                         mutableListOf(-1),
                         mutableListOf(-1),
                         mutableListOf(false, false, false, false, false, false),
-                        mutableListOf(0, 0, 0, 0, 0, 0)
+                        mutableListOf(0, 0, 0, 0, 0, 0),
+                        auth.uid
                     )
                 )
                 .addOnSuccessListener { documentReference ->
