@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation_bar.setupWithNavController(navController)
     }
 
-    fun onLessonCardFragment(arguments: Bundle?) {
+    fun onLessonPagerCardFragment(arguments: Bundle?) {
         navController.navigate(R.id.action_nav_fragment_class_cards_to_nav_courses_card, arguments)
     }
 

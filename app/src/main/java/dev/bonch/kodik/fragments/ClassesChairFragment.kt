@@ -113,4 +113,10 @@ class ClassesChairFragment: Fragment() {
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        val db = FirebaseFirestore.getInstance()
+        val lessonsRef = db.collection("courses").document()
+    }
 }

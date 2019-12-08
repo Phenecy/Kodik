@@ -16,10 +16,13 @@ data class Course(
     var courseTitle: String,
     var courseClasses: MutableList<String>? = arrayListOf(),
     var courseClassesCheck: MutableList<Boolean>? = arrayListOf(),
-    var courseDescription: String?
+    var courseDescription: String?,
+    var courseLesson: MutableList<Lesson>? = arrayListOf(),
+    var courseFbName: String?
 ):Parcelable  {
     class CoursesController {
         var coursesList: MutableList<Course> = mutableListOf()
+        var lessonsList: MutableList<Lesson> = mutableListOf()
         private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         private val coursesRef = db.collection("courses").orderBy("courseId")
         private val source = Source.DEFAULT
@@ -29,16 +32,35 @@ data class Course(
                 .get(source)
                 .addOnSuccessListener { result ->
                     for (document in result) {
-                        Log.d("Getting Data", "Success")
+                        var lessonRef = db.collection("courses").document(document["courseName"].toString()).collection("courseLessons")
+                        lessonRef
+                            .get(source)
+                            .addOnSuccessListener { it ->
+                                it.forEach {
+                                    lessonsList.add(
+                                        Lesson(
+                                            it["type"].toString(),
+                                            it["title"].toString(),
+                                            it["text"].toString(),
+                                            it["answerChoice"] as MutableList<String>?,
+                                            it["rightAnswer"]?.toString()?.toInt(),
+                                            it["check"].toString().toInt()
+                                        )
+                                    )
+                                }
+                            }
                         coursesList.add(
                             Course(
                                 document["courseId"].toString().toInt(),
                                 document["courseTitle"].toString(),
                                 document["courseText"] as MutableList<String>?,
                                 document["courseClassesCheck"] as MutableList<Boolean>?,
-                                document["courseDescription"].toString()
+                                document["courseDescription"].toString(),
+                                lessonsList,
+                                document["courseName"].toString()
                             )
                         )
+                        lessonsList.clear()
                     }
                     HomeFragment.test.dataGot()
                 }

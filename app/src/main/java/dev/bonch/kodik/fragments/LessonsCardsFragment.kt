@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.bonch.kodik.R
 import dev.bonch.kodik.activities.MainActivity
 import dev.bonch.kodik.models.Course
+import dev.bonch.kodik.models.Lesson
 import kotlinx.android.synthetic.main.item_lesson_open_card.view.*
 
 class LessonsCardsFragment: Fragment() {
@@ -38,14 +39,14 @@ class LessonsCardsFragment: Fragment() {
         val bundle: Bundle? = arguments
 
         if (bundle !== null) {
-            nameCourse = bundle.getString("title_pager")!!.toUpperCase()
             currentCourse = bundle.getParcelable("current_course")
+            nameCourse = currentCourse!!.courseTitle
         }
         titleFragmentTw.text = nameCourse
 
         cardsRecycler = view.findViewById(R.id.recycler_class_card)
         cardsRecycler.layoutManager = GridLayoutManager(ClassCardsFragment@context, 2)
-        cardsRecycler.adapter = ClassesCardAdapter()
+        cardsRecycler.adapter = ClassesCardAdapter(currentCourse?.courseLesson)
 
         initView()
 
@@ -61,14 +62,7 @@ class LessonsCardsFragment: Fragment() {
         toast.view = toastView
     }
 
-    inner class ClassesCardAdapter() : RecyclerView.Adapter<ClassesCardAdapter.ClassCardVH>() {
-
-        private var titlse = arrayListOf(
-            "Знакомьтесь: HTML!",
-            "С помощью чего в языке разметки программируется контент?",
-            "Структура веб-страницы"
-        )
-        private var type = arrayListOf(1, 2, 3)
+    inner class ClassesCardAdapter(val mutableList: MutableList<Lesson>?) : RecyclerView.Adapter<ClassesCardAdapter.ClassCardVH>() {
 
         inner class ClassCardVH(view: View) : RecyclerView.ViewHolder(view)
 
@@ -95,11 +89,11 @@ class LessonsCardsFragment: Fragment() {
         }
 
         override fun getItemViewType(position: Int): Int {
-            return type[position]
+            return mutableList!![position].check
         }
 
         override fun getItemCount(): Int {
-            return titlse.size
+            return mutableList!!.size
         }
 
         override fun onBindViewHolder(holder: ClassCardVH, position: Int) {
@@ -115,10 +109,10 @@ class LessonsCardsFragment: Fragment() {
                         val bundle = Bundle()
                         bundle.putString("title_pager", nameCourse)
                         bundle.putInt("number_lesson", position)
-                        (context as MainActivity).onLessonCardFragment(bundle)
+                        (context as MainActivity).onLessonPagerCardFragment(bundle)
                     }
                 }
-                title_card.text = titlse[position]
+                title_card.text = mutableList!![position].title
             }
         }
     }
