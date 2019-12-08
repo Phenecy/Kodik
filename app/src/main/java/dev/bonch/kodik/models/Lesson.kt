@@ -5,11 +5,10 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Lesson(
-    var type: String?,
-    var title: String?,
+    var type: String,
+    var title: String,
     var text: String?,
     var answerChoice: MutableList<String>? = arrayListOf(),
-    var rightAnswer: Int?,
-    var check: Int
+    var rightAnswer: Int?
 ): Parcelable {
 }

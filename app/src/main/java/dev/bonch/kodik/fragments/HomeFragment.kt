@@ -10,6 +10,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.annotation.RequiresApi
+import androidx.constraintlayout.solver.widgets.Snapshot
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -18,8 +19,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.getField
 import dev.bonch.kodik.R
 import dev.bonch.kodik.activities.MainActivity
 import dev.bonch.kodik.activities.SplashActivity
@@ -52,6 +55,7 @@ private lateinit var toast: Toast
 private lateinit var textToast: TextView
 private lateinit var nameCourseDescription: TextView
 private lateinit var courseDescription: TextView
+private var progress : Int? = null
 
 private var animationListener = object : Animation.AnimationListener {
     override fun onAnimationRepeat(animation: Animation?) {
@@ -101,13 +105,23 @@ private val adapter = object : CoursesAdapter(coursesList) {
 
                 backImage.startAnimation(animTransReverse)
                 viewBack.startAnimation(animTransReverse)
+
+                userCoursesRef = db.collection("users").document(email.toString())
+                userCoursesRef
+                    .get()
+                    .addOnSuccessListener {
+                        progress = it["course$currentCourseNumber"]?.toString()?.toInt() ?: -1
+                    }
             }
         }
     }
 }
+private lateinit var userCoursesRef: DocumentReference
 private lateinit var viewFragment: View
 private lateinit var progr: ProgressBar
 private var currentCourseNumber: Int = -1
+private var email: String? = null
+private lateinit var db: FirebaseFirestore
 
 class HomeFragment : Fragment() {
 
@@ -121,7 +135,7 @@ class HomeFragment : Fragment() {
         bannersAdapter = BannersAdapter(bannersList)
         coursesRecycler = viewFragment.findViewById(R.id.home_main_recycler_view)
         bannersAdapter = BannersAdapter(bannersList)
-        coursesRecycler.layoutManager = LinearLayoutManager(HomeFragment@context)
+        coursesRecycler.layoutManager = LinearLayoutManager(HomeFragment@ context)
         coursesRecycler.adapter = adapter
         adapter.notifyDataSetChanged()
 
@@ -139,7 +153,8 @@ class HomeFragment : Fragment() {
 
         animTrans = AnimationUtils.loadAnimation(HomeFragment@ context, R.anim.translate)
         animTrans.setAnimationListener(animationListener)
-        animTransReverse = AnimationUtils.loadAnimation(HomeFragment@ context, R.anim.translate_reverse)
+        animTransReverse =
+            AnimationUtils.loadAnimation(HomeFragment@ context, R.anim.translate_reverse)
 
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
@@ -168,20 +183,22 @@ class HomeFragment : Fragment() {
     }
 
     private fun setClickers() {
-        val email = FirebaseAuth.getInstance().currentUser?.email
-        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
-        val userCoursesRef = db.collection("users").document(email.toString())
-
         addToMyCoursesBtn.setOnClickListener {
-            userCoursesRef.update("courses$currentCourseNumber", true)
-            textToast.text = getString(R.string.courses_added_to_list)
-            toast.show()
+            if (progress == -1) {
+                userCoursesRef.update("course$currentCourseNumber", 0)
+                textToast.text = getString(R.string.courses_added_to_list)
+                toast.show()
+            } else {
+                textToast.text = "Ты уже добавил этот курс в свой список курсов:)"
+                toast.show()
+            }
         }
 
         startNowBtn.setOnClickListener {
             bundle.putParcelable("current_course", coursesList[currentCourseNumber])
+            bundle.putInt("progress", progress!!)
             (context as MainActivity).onLessonChairFragment(bundle)
-            userCoursesRef.update("courses$currentCourseNumber", true)
+            if (progress == -1) userCoursesRef.update("course$currentCourseNumber", 0)
         }
     }
 
@@ -191,7 +208,8 @@ class HomeFragment : Fragment() {
         val coorLayout: CoordinatorLayout = viewFragment.findViewById(R.id.container_test)
         progr = viewFragment.findViewById(R.id.splash_progress_bar)
         if (coursesList.size !== 0) progr.visibility = View.GONE
-        val viewDescription = layoutInflater.inflate(R.layout.item_description_course, coorLayout, true)
+        val viewDescription =
+            layoutInflater.inflate(R.layout.item_description_course, coorLayout, true)
 
         viewDescription?.run {
             backImage = findViewById(R.id.background_image)
@@ -205,6 +223,9 @@ class HomeFragment : Fragment() {
 
         initView()
         setClickers()
+
+        email = FirebaseAuth.getInstance().currentUser?.email
+        db = FirebaseFirestore.getInstance()
     }
 
     interface test {

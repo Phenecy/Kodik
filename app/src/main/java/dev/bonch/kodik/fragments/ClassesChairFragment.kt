@@ -2,6 +2,7 @@ package dev.bonch.kodik.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +23,7 @@ class ClassesChairFragment: Fragment() {
     private lateinit var toast: Toast
     private lateinit var textToast: TextView
     private lateinit var titleTw: TextView
-    private lateinit var db: FirebaseFirestore
+    private var progress: Int = -1
     private var currentCourse: Course? = null
 
     @SuppressLint("SetTextI18n")
@@ -37,8 +38,9 @@ class ClassesChairFragment: Fragment() {
 
         val bundle: Bundle? = arguments
         if (bundle !== null) {
-            titleTw.text = "${getString(R.string.themes_of_course)} ${bundle.getString("name_course")!!.toUpperCase()}"
             currentCourse = bundle.getParcelable<Course>("current_course")
+            titleTw.text = "${getString(R.string.themes_of_course)} ${currentCourse!!.courseTitle}"
+            progress = bundle.getInt("progress")
         }
 
         initView()
@@ -106,7 +108,7 @@ class ClassesChairFragment: Fragment() {
                     else {
                         val bundle = Bundle()
                         bundle.putParcelable("current_course", currentCourse)
-                        bundle.putString("title_pager", titleList!![position])
+                        bundle.putInt("progress", progress)
                         (context as MainActivity).onClassCardsFragment(bundle)
                     }
                 }
@@ -114,9 +116,4 @@ class ClassesChairFragment: Fragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        val db = FirebaseFirestore.getInstance()
-        val lessonsRef = db.collection("courses").document()
-    }
 }
