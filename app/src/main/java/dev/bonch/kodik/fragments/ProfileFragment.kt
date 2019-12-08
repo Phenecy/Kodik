@@ -6,14 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import dev.bonch.kodik.R
 import kotlinx.android.synthetic.main.fragment_profile.*
+import org.w3c.dom.Text
 
-private lateinit var profileData : TextView
-private lateinit var profileMyTrophy : TextView
+private lateinit var profileData: TextView
+private lateinit var profileMyTrophy: TextView
+private lateinit var profileName: TextView
+private lateinit var profilePhoto: ImageView
 
 class ProfileFragment : Fragment() {
 
@@ -28,12 +33,14 @@ class ProfileFragment : Fragment() {
 
         profileData = view.findViewById(R.id.profile_data)
         profileMyTrophy = view.findViewById(R.id.profile_my_trophy)
+        profileName = view.findViewById<TextView>(R.id.profile_name)
+        profilePhoto = view.findViewById(R.id.profile_photo)
 
         fragmentManager!!.beginTransaction()
             .add(R.id.profile_container, profileTrophyFragment)
             .commit()
 
-        fun toDataFragment(){
+        fun toDataFragment() {
             profileData.setTextColor(Color.parseColor("#000000"))
             profileMyTrophy.setTextColor(Color.parseColor("#575757"))
             fragmentManager!!.beginTransaction()
@@ -41,7 +48,7 @@ class ProfileFragment : Fragment() {
                 .commit()
         }
 
-        fun toTrophyFragment(){
+        fun toTrophyFragment() {
             profileData.setTextColor(Color.parseColor("#575757"))
             profileMyTrophy.setTextColor(Color.parseColor("#000000"))
             fragmentManager!!.beginTransaction()
@@ -49,13 +56,29 @@ class ProfileFragment : Fragment() {
                 .commit()
         }
 
-        profileData.setOnClickListener{
+        fun setUserName() {
+            val user = FirebaseAuth.getInstance().currentUser
+            user?.let {
+                profileName.text = user.displayName
+            }
+        }
+
+        setUserName()
+
+        profileData.setOnClickListener {
             toDataFragment()
         }
 
-        profileMyTrophy.setOnClickListener{
+        profileMyTrophy.setOnClickListener {
             toTrophyFragment()
         }
         return view
+    }
+
+    fun setUserData() {
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let {
+            profileName.text = user.displayName
+        }
     }
 }

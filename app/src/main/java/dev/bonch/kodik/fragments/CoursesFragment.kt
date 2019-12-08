@@ -1,6 +1,7 @@
 package dev.bonch.kodik.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
 import dev.bonch.kodik.R
 import dev.bonch.kodik.activities.MainActivity
 import dev.bonch.kodik.adapters.CoursesAdapter
@@ -18,8 +20,9 @@ import kotlinx.android.synthetic.main.item_home_courses.view.*
 
 private lateinit var coursesRecycler: RecyclerView
 private lateinit var linearLayoutManager: LinearLayoutManager
+private lateinit var db: FirebaseFirestore
 
-private var courseList: MutableList<Course> = Course.MineCoursesController().myCoursesList
+private  var courseList: MutableList<Course> = Course.MineCoursesController().myCoursesList
 
 private val adapter = object: CoursesAdapter(courseList) {
     override fun onBindViewHolder(holder: CoursesHolder, position: Int) {
@@ -35,6 +38,7 @@ private val adapter = object: CoursesAdapter(courseList) {
             }
         }
     }
+
 }
 
 class CoursesFragment : Fragment() {

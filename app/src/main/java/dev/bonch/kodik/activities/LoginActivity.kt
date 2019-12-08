@@ -17,7 +17,9 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 import dev.bonch.kodik.R
+import dev.bonch.kodik.models.User
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -32,6 +34,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,11 +118,34 @@ class LoginActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("Credential", "signInWithCredential:success")
                     val user = auth.currentUser
+
+                    db.collection("users")
+                        .add(
+                            User(
+                                user?.email.toString().trim(),
+                                user?.email.toString().trim(),
+                                "uri",
+                                mutableListOf(-1),
+                                mutableListOf(-1),
+                                mutableListOf(false, false, false, false, false, false)
+                            )
+                        )
+                        .addOnSuccessListener { documentReference ->
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(
+                                this@LoginActivity,
+                                "Error: " + e.message,
+                                Toast.LENGTH_SHORT
+                            ).show();
+                        }
+
                     updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("Credential", "signInWithCredential:failure", task.exception)
-                    Toast.makeText(applicationContext, "Authentication Failed.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Authentication Failed.", Toast.LENGTH_SHORT)
+                        .show()
                     updateUI(null)
                 }
             }
