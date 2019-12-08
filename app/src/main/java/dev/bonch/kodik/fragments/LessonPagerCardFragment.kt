@@ -158,12 +158,14 @@ class LessonPagerCardFragment : Fragment() {
                     if (answerChoiceRg.checkedRadioButtonId == rightAnswer) {
                         textToast.text = getString(R.string.correct_answer)
                         toast.show()
+
                         i++
 
                         if (i == currentCourse?.courseLesson!!.size) {
                             val bundle = Bundle()
                             textToast.text = "Поздравляем! Ты закончил этот раздел!:)"
                             bundle.putParcelable("current_course", currentCourse)
+                            bundle.putInt("progress", progress)
                             (context as MainActivity).onLessonChairFragmentFromPager(bundle)
 
                         } else {
