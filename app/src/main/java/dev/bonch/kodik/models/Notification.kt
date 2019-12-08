@@ -12,6 +12,7 @@ data class Notification(
 
         init {
             notificationsList.add(Notification(0, "Поздравляем! Ты получил награду \"Знаток!\"", null))
+            notificationsList.add(Notification(1, "Поздравляем! Ты получил награду \"Знаток!\"", null))
         }
     }
 
