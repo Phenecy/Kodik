@@ -22,6 +22,7 @@ class LessonsCardsFragment: Fragment() {
     private lateinit var titleFragmentTw: TextView
     private lateinit var toast: Toast
     private lateinit var textToast: TextView
+    private var progress = -1
 
     private lateinit var nameCourse: String
 
@@ -41,7 +42,9 @@ class LessonsCardsFragment: Fragment() {
         if (bundle !== null) {
             currentCourse = bundle.getParcelable("current_course")
             nameCourse = currentCourse!!.courseTitle
+            progress = bundle.getInt("progress")
         }
+
         titleFragmentTw.text = nameCourse
 
         cardsRecycler = view.findViewById(R.id.recycler_class_card)
@@ -62,7 +65,7 @@ class LessonsCardsFragment: Fragment() {
         toast.view = toastView
     }
 
-    inner class ClassesCardAdapter(val mutableList: MutableList<Lesson>?) : RecyclerView.Adapter<ClassesCardAdapter.ClassCardVH>() {
+    inner class ClassesCardAdapter(private val mutableList: MutableList<Lesson>?) : RecyclerView.Adapter<ClassesCardAdapter.ClassCardVH>() {
 
         inner class ClassCardVH(view: View) : RecyclerView.ViewHolder(view)
 
@@ -80,7 +83,7 @@ class LessonsCardsFragment: Fragment() {
                     false
                 )
 
-            if (viewType == 2) {
+            if (viewType == 1) {
                 val isChecked: View = view.findViewById(R.id.checked_view)
                 isChecked.isVisible = false
             }
@@ -89,7 +92,11 @@ class LessonsCardsFragment: Fragment() {
         }
 
         override fun getItemViewType(position: Int): Int {
-            return mutableList!![position].check
+             return when {
+                position < progress -> 2
+                position == progress -> 1
+                else -> 0
+            }
         }
 
         override fun getItemCount(): Int {
@@ -98,7 +105,7 @@ class LessonsCardsFragment: Fragment() {
 
         override fun onBindViewHolder(holder: ClassCardVH, position: Int) {
             holder.itemView.run {
-                if (holder.itemViewType == 3) {
+                if (holder.itemViewType == 0) {
                     setOnClickListener {
                         textToast.text = getString(R.string.locked_lesson)
                         toast.show()
@@ -107,8 +114,9 @@ class LessonsCardsFragment: Fragment() {
                 else {
                     setOnClickListener {
                         val bundle = Bundle()
-                        bundle.putString("title_pager", nameCourse)
-                        bundle.putInt("number_lesson", position)
+                        bundle.putParcelable("current_course", currentCourse)
+                        bundle.putInt("position", position)
+                        bundle.putInt("progress", progress)
                         (context as MainActivity).onLessonPagerCardFragment(bundle)
                     }
                 }
