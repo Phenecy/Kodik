@@ -129,20 +129,43 @@ class LessonPagerCardFragment : Fragment() {
             private val titleLessonTw = view.findViewById<TextView>(R.id.lesson_title)
             private val nextLessonBtn = view.findViewById<Button>(R.id.next_lesson_button)
             private val answerChoiceRg = view.findViewById<RadioGroup>(R.id.answer_choice)
-            
+
+            private val radio1 = view.findViewById<RadioButton>(R.id.answer_1)
+            private val radio2 = view.findViewById<RadioButton>(R.id.answer_2)
+            private val radio3 = view.findViewById<RadioButton>(R.id.answer_3)
+            private val radio4 = view.findViewById<RadioButton>(R.id.answer_4)
+
             override fun bind() {
                 titleLessonTw.text = lessonsList[position].title
 
+                if (lessonsList[position].answerChoice !== null) {
+                    radio1.text = lessonsList[position].answerChoice!![0]
+                    radio2.text = lessonsList[position].answerChoice!![1]
+                    radio3.text = lessonsList[position].answerChoice!![2]
+                    radio4.text = lessonsList[position].answerChoice!![3]
+                }
+
+                var rightAnswer = R.id.answer_1
+
+                when (lessonsList[position]?.rightAnswer) {
+                    1 -> rightAnswer = R.id.answer_1
+                    2 -> rightAnswer = R.id.answer_2
+                    3 -> rightAnswer = R.id.answer_3
+                    4 -> rightAnswer = R.id.answer_4
+                }
+
                 nextLessonBtn.setOnClickListener {
-                    if (answerChoiceRg.checkedRadioButtonId == R.id.answer_3) {
+                    if (answerChoiceRg.checkedRadioButtonId == rightAnswer) {
                         textToast.text = getString(R.string.correct_answer)
                         toast.show()
+
                         i++
 
                         if (i == currentCourse?.courseLesson!!.size) {
                             val bundle = Bundle()
                             textToast.text = "Поздравляем! Ты закончил этот раздел!:)"
                             bundle.putParcelable("current_course", currentCourse)
+                            bundle.putInt("progress", progress)
                             (context as MainActivity).onLessonChairFragmentFromPager(bundle)
 
                         } else {
