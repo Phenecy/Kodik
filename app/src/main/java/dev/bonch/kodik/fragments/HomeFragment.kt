@@ -7,6 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.ktx.toObjects
 import dev.bonch.kodik.R
 import dev.bonch.kodik.activities.MainActivity
 import dev.bonch.kodik.adapters.BannersAdapter
@@ -23,13 +28,12 @@ private lateinit var bannersLinearLayoutManager: LinearLayoutManager
 private var coursesList: MutableList<Course> = Course.CoursesController().coursesList
 private var bannersList: MutableList<Banner> = Banner.BannersController().bannersList
 
-private val adapter = object: CoursesAdapter(coursesList) {
+private val adapter = object : CoursesAdapter(coursesList) {
     override fun onBindViewHolder(holder: CoursesHolder, position: Int) {
         super.onBindViewHolder(holder, position)
 
         holder.itemView.run {
             home_course_title.text = coursesList[position].courseTitle
-
             holder.itemView.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString("name_course", coursesList[position].courseTitle)
@@ -48,8 +52,8 @@ class HomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        bannersAdapter = BannersAdapter(bannersList)
         coursesRecycler = view.findViewById(R.id.home_main_recycler_view)
+        bannersAdapter = BannersAdapter(bannersList)
         coursesRecycler.layoutManager = LinearLayoutManager(HomeFragment@context)
         coursesRecycler.adapter = adapter
 

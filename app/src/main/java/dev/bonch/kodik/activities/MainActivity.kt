@@ -1,13 +1,16 @@
 package dev.bonch.kodik.activities
 
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
-import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Source
 import dev.bonch.kodik.R
+import dev.bonch.kodik.models.Course
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -39,6 +42,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClassCardsFragment(arguments: Bundle?) {
-        navController.navigate(R.id.action_nav_fragment_chair_to_nav_fragment_class_cards, arguments)
+        navController.navigate(
+            R.id.action_nav_fragment_chair_to_nav_fragment_class_cards,
+            arguments
+        )
     }
 }
