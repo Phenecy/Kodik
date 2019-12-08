@@ -11,8 +11,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
 import dev.bonch.kodik.R
 import dev.bonch.kodik.activities.MainActivity
+import dev.bonch.kodik.models.Course
 
 class ClassesChairFragment: Fragment() {
 
@@ -20,6 +22,8 @@ class ClassesChairFragment: Fragment() {
     private lateinit var toast: Toast
     private lateinit var textToast: TextView
     private lateinit var titleTw: TextView
+    private lateinit var db: FirebaseFirestore
+    private var currentCourse: Course? = null
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -32,13 +36,16 @@ class ClassesChairFragment: Fragment() {
         titleTw = view.findViewById(R.id.title_classes_chair)
 
         val bundle: Bundle? = arguments
-        if (bundle !== null) titleTw.text = "${getString(R.string.themes_of_course)} ${bundle.getString("name_course")!!.toUpperCase()}"
+        if (bundle !== null) {
+            titleTw.text = "${getString(R.string.themes_of_course)} ${bundle.getString("name_course")!!.toUpperCase()}"
+            currentCourse = bundle.getParcelable<Course>("current_course")
+        }
 
         initView()
 
         chairLessonRec = view.findViewById(R.id.lesson_list_recycler)
         chairLessonRec.layoutManager = LinearLayoutManager(container!!.context)
-        chairLessonRec.adapter = ChairAdapter()
+        chairLessonRec.adapter = ChairAdapter(currentCourse?.courseClasses, currentCourse?.courseClassesCheck )
 
         return view
     }
@@ -53,10 +60,7 @@ class ClassesChairFragment: Fragment() {
     }
 
 
-    inner class ChairAdapter: RecyclerView.Adapter<ChairAdapter.ChairVH>() {
-
-        private var test = arrayListOf("простейшие навыки", "урок 2", "урок 3", "урок 4", "урок 5", "урок 6", "урок 7", "урок 8", "урок 9")
-        private var types = arrayListOf(true, true, true, true, false, false, false, false, false)
+    inner class ChairAdapter(private val titleList: MutableList<String>?, private val checkedList: MutableList<Boolean>?): RecyclerView.Adapter<ChairAdapter.ChairVH>() {
 
         inner class ChairVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val titleTw = itemView.findViewById<TextView>(R.id.title_lesson)
@@ -64,16 +68,19 @@ class ClassesChairFragment: Fragment() {
         }
 
         override fun getItemViewType(position: Int): Int {
-            return if (!types[position]) 0 else 1
+            var type = -1
+            if (checkedList !== null){
+                type = if (checkedList[position]) 1 else 0
+            }
+            return type
         }
 
         override fun getItemCount(): Int {
-            return test.size
+            return titleList!!.size
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChairVH {
-            val view: View
-            view = if (viewType == 0) LayoutInflater.from(parent.context).inflate(
+            val view: View = if (viewType == 0) LayoutInflater.from(parent.context).inflate(
                 R.layout.item_lock_class,
                 parent,
                 false)
@@ -86,23 +93,30 @@ class ClassesChairFragment: Fragment() {
 
         override fun onBindViewHolder(holder: ChairVH, position: Int) {
             holder.itemView.run {
-                holder.titleTw.text = test[position]
-                if (position == test.size - 1) {
+                holder.titleTw.text = titleList!![position]
+                if (position == titleList!!.size - 1) {
                     holder.line.isVisible = false
                 }
                 holder.itemView.setOnClickListener{
                     if (holder.itemViewType == 0) {
-                        textToast.text = getString(R.string.locked_level)
+                        textToast.text = getString(R.string.locked_lesson)
                         toast.show()
                     }
 
                     else {
                         val bundle = Bundle()
-                        bundle.putString("title_pager", test[position])
+                        bundle.putParcelable("current_course", currentCourse)
+                        bundle.putString("title_pager", titleList!![position])
                         (context as MainActivity).onClassCardsFragment(bundle)
                     }
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val db = FirebaseFirestore.getInstance()
+        val lessonsRef = db.collection("courses").document()
     }
 }

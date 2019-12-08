@@ -24,11 +24,11 @@ open class CoursesAdapter(private val coursesList: MutableList<Course>) :
     override fun getItemCount(): Int = coursesList.size
 
     override fun onBindViewHolder(holder: CoursesHolder, position: Int) {
-
     }
 
     inner class CoursesHolder(view: View) : RecyclerView.ViewHolder(view) {
         val courseTitleText = itemView.findViewById<TextView>(R.id.home_course_title)
         val courseCard = itemView.findViewById<CardView>(R.id.home_course_card)
     }
+
 }

@@ -127,7 +127,9 @@ class LoginActivity : AppCompatActivity() {
                                 "uri",
                                 mutableListOf(-1),
                                 mutableListOf(-1),
-                                mutableListOf(false, false, false, false, false, false)
+                                mutableListOf(false, false, false, false, false, false),
+                                mutableListOf(0, 0, 0, 0, 0, 0),
+                                auth.uid
                             )
                         )
                         .addOnSuccessListener { documentReference ->

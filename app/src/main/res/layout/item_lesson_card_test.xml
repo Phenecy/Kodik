@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:hint="Здесь бы мог быть ваш заголовок"
+                android:layout_marginRight="16dp"
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/rubik_bold"
                 android:textColor="#000000"
@@ -36,27 +36,31 @@
 
                     <RadioButton
                         android:id="@+id/answer_1"
-                        android:hint="текст1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:hint="текст1" />
 
                     <RadioButton
                         android:id="@+id/answer_2"
-                        android:hint="текст2"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:hint="текст2dfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff" />
 
                     <RadioButton
                         android:id="@+id/answer_3"
-                        android:hint="текст3"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:hint="текст3" />
 
                     <RadioButton
                         android:id="@+id/answer_4"
-                        android:hint="текст4"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:hint="текст4" />
 
                 </RadioGroup>
 

@@ -27,6 +27,9 @@
     <string name="lesson_card_button">Дальше</string>
     <string name="wrong_answer">Неправильно! \nПопробуй ещё:)</string>
     <string name="correct_answer">Выполнено! Молодец!</string>
-    <string name="locked_level">Эта тема пока недоступна\nизучи предыдущие, чтобы открыть её:)</string>
+    <string name="locked_lesson">Эта тема пока недоступна\nизучи предыдущие, чтобы открыть её:)</string>
     <string name="themes_of_course">ТЕМЫ КУРСА</string>
+    <string name="add_to_my_courses">Добавить в Мои курсы</string>
+    <string name="start_now">НАЧАТЬ СЕЙЧАС</string>
+    <string name="courses_added_to_list">Курс успешно добавлен в список твоих курсов;)</string>
 </resources>
