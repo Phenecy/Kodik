@@ -40,7 +40,11 @@
     <fragment
         android:id="@+id/nav_courses_card"
         android:name="dev.bonch.kodik.fragments.LessonPagerCardFragment"
-        tools:layout="@layout/fragment_lesson_pager_card"/>
+        tools:layout="@layout/fragment_lesson_pager_card">
+        <action
+            android:id="@+id/action_nav_courses_card_to_nav_fragment_chair"
+            app:destination="@id/nav_fragment_chair" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_fragment_chair"

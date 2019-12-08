@@ -47,4 +47,8 @@ class MainActivity : AppCompatActivity() {
             arguments
         )
     }
+
+    fun onLessonChairFragmentFromPager(arguments: Bundle?) {
+        navController.navigate(R.id.action_nav_courses_card_to_nav_fragment_chair, arguments)
+    }
 }

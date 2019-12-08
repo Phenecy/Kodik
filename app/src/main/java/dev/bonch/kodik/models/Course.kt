@@ -43,8 +43,7 @@ data class Course(
                                             it["title"].toString(),
                                             it["text"].toString(),
                                             it["answerChoice"] as MutableList<String>?,
-                                            it["rightAnswer"]?.toString()?.toInt(),
-                                            it["check"].toString().toInt()
+                                            it["rightAnswer"]?.toString()?.toInt()
                                         )
                                     )
                                 }
