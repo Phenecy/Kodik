@@ -1,12 +1,10 @@
 package dev.bonch.kodik.activities
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
-import com.google.firebase.auth.FirebaseAuth
 import dev.bonch.kodik.R
 import kotlinx.android.synthetic.main.activity_main.*
 

@@ -92,7 +92,7 @@ class ClassesChairFragment: Fragment() {
                 }
                 holder.itemView.setOnClickListener{
                     if (holder.itemViewType == 0) {
-                        textToast.text = getString(R.string.locked_level)
+                        textToast.text = getString(R.string.locked_lesson)
                         toast.show()
                     }
 

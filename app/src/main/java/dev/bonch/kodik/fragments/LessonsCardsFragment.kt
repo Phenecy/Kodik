@@ -100,7 +100,7 @@ class LessonsCardsFragment: Fragment() {
             holder.itemView.run {
                 if (holder.itemViewType == 3) {
                     setOnClickListener {
-                        textToast.text = getString(R.string.locked_level)
+                        textToast.text = getString(R.string.locked_lesson)
                         toast.show()
                     }
                 }

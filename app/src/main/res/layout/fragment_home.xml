@@ -33,6 +33,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/home_banner_recycler_view"
                     android:layout_marginTop="15dp"
@@ -51,11 +52,11 @@
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/home_container"
-        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
+        android:layout_height="548dp"
+        android:layout_marginTop="15dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/home_main_recycler_view"
             android:layout_width="match_parent"
@@ -64,5 +65,89 @@
             tools:listitem="@layout/item_home_courses" />
     </androidx.core.widget.NestedScrollView>
 
+
+    <View
+        android:id="@+id/background_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:visibility="gone"
+        android:layout_gravity="bottom"
+        />
+
+    <TextView
+        android:id="@+id/course_description_name"
+        android:layout_width="330dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/rubik_bold"
+        android:textAppearance="@style/RegistrationTheme" />
+
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_gravity="bottom" />
+
+    <LinearLayout
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/ef_round_corner_bottom_sheet"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="200dp"
+        android:elevation="1dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/course_description"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/rubik_medium"
+                android:text="HTML – это язык гипертекстовой разметки документов. С помощью него ты сможешь создать свой первый сайт! Давай вместе окунёмся в мир front-end разработки ;)"
+                android:textColor="@android:color/black" />
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/start_now_button"
+            android:layout_width="328dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/ef_round_corner_button_green_gradient"
+            android:fontFamily="@font/rubik_bold"
+            android:layout_gravity="center_horizontal|bottom"
+            android:text="@string/start_now"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/add_to_my_courses_button"
+            android:layout_width="328dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/add_to_my_courses"
+            android:background="@drawable/ef_round_corner_button_empty"
+            android:fontFamily="@font/rubik_bold"
+            android:layout_gravity="center_horizontal|bottom"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"/>
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
