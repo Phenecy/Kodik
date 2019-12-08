@@ -10,13 +10,16 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.storage.FirebaseStorage
 import dev.bonch.kodik.R
 import kotlinx.android.synthetic.main.activity_splash_afterload.*
 
 class SplashActivity : AppCompatActivity() {
 
+    private lateinit var splashImageView: ImageView
     private lateinit var imageView: ImageView
     private lateinit var animation: Animation
     private lateinit var progressBar: ProgressBar
@@ -63,8 +66,14 @@ class SplashActivity : AppCompatActivity() {
             finish()
         } else {
             setContentView(R.layout.activity_splash_afterload)
+            splashImageView = findViewById(R.id.splash_image_view)
             val regButton: Button = splash_reg_button
             val loginButton: Button = splash_login_button
+
+            Glide.with(this)
+                .load("https://firebasestorage.googleapis.com/v0/b/kodik-ea6fa.appspot.com/o/body.png?alt=media&token=57309c14-ca30-4549-9a23-dbc9299a6aaa")
+                .into(splashImageView)
+
             regButton.setOnClickListener {
                 intent = Intent(this@SplashActivity, RegistrationActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
