@@ -107,6 +107,7 @@ private val adapter = object : CoursesAdapter(coursesList) {
                 viewBack.startAnimation(animTransReverse)
 
                 userCoursesRef = db.collection("users").document(email.toString())
+
                 userCoursesRef
                     .get()
                     .addOnSuccessListener {
@@ -196,6 +197,7 @@ class HomeFragment : Fragment() {
 
         startNowBtn.setOnClickListener {
             bundle.putParcelable("current_course", coursesList[currentCourseNumber])
+            if (progress == -1) progress = 0
             bundle.putInt("progress", progress!!)
             (context as MainActivity).onLessonChairFragment(bundle)
             if (progress == -1) userCoursesRef.update("course$currentCourseNumber", 0)
