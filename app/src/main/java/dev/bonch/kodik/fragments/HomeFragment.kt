@@ -2,7 +2,6 @@ package dev.bonch.kodik.fragments
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.annotation.RequiresApi
-import androidx.constraintlayout.solver.widgets.Snapshot
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -19,19 +17,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.getField
 import dev.bonch.kodik.R
 import dev.bonch.kodik.activities.MainActivity
-import dev.bonch.kodik.activities.SplashActivity
 import dev.bonch.kodik.adapters.BannersAdapter
 import dev.bonch.kodik.adapters.CoursesAdapter
 import dev.bonch.kodik.models.Banner
 import dev.bonch.kodik.models.Course
 import kotlinx.android.synthetic.main.item_home_courses.view.*
-import kotlinx.coroutines.delay
-import kotlin.concurrent.thread
 
 
 private lateinit var bannersAdapter: BannersAdapter

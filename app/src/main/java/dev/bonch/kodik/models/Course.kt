@@ -2,11 +2,8 @@ package dev.bonch.kodik.models
 
 import android.os.Parcelable
 import android.util.Log
-import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Source
-import com.google.firebase.firestore.ktx.toObject
-import dev.bonch.kodik.activities.MainActivity
 import dev.bonch.kodik.fragments.HomeFragment
 import kotlinx.android.parcel.Parcelize
 

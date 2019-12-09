@@ -1,16 +1,11 @@
 package dev.bonch.kodik.activities
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Source
 import dev.bonch.kodik.R
-import dev.bonch.kodik.models.Course
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
