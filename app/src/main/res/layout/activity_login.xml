@@ -11,15 +11,15 @@
         android:id="@+id/registration_text_view"
         android:layout_width="330dp"
         android:layout_height="34dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="64dp"
         android:fontFamily="@font/rubik_bold"
         android:gravity="top"
         android:hint="@string/registration_name_text_view"
         android:text="@string/login_text"
         android:textAppearance="@style/RegistrationTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <EditText
         android:id="@+id/login_email_edit_text"
@@ -111,5 +111,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

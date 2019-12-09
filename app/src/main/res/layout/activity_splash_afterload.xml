@@ -11,38 +11,38 @@
         android:id="@+id/splash_text_view"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/rubik_bold"
         android:gravity="center_horizontal"
         android:text="@string/app_name"
         android:textAllCaps="true"
         android:textAppearance="@style/RegistrationTheme"
         android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/splash_intro"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/splash_intro"
         android:layout_width="328dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/rubik"
         android:gravity="center_horizontal"
         android:lineHeight="24dp"
         android:text="@string/splash_intro_text"
         android:textColor="@color/black"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/splash_image_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/splash_text_view"
         tools:targetApi="p" />
 
     <Button
         android:id="@+id/splash_reg_button"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/ef_round_corner_button_green_gradient"
         android:fontFamily="@font/rubik"
         android:text="@string/registration_text_view"
@@ -50,17 +50,17 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintWidth_percent="0.91"
-        app:layout_constraintWidth_max="360dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/splash_image_view"
+        app:layout_constraintWidth_max="360dp"
+        app:layout_constraintWidth_percent="0.91" />
 
     <Button
         android:id="@+id/splash_login_button"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/ef_round_corner_button_empty"
         android:fontFamily="@font/rubik"
         android:text="@string/login_button"
@@ -68,20 +68,19 @@
         android:textColor="@color/registration_main_color"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintWidth_percent="0.91"
-        app:layout_constraintWidth_max="360dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/splash_reg_button" />
+        app:layout_constraintTop_toBottomOf="@+id/splash_reg_button"
+        app:layout_constraintWidth_max="360dp"
+        app:layout_constraintWidth_percent="0.91" />
 
     <ImageView
         android:id="@+id/splash_image_view"
         android:layout_width="222dp"
         android:layout_height="238dp"
-        app:layout_constraintBottom_toTopOf="@+id/splash_reg_button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/splash_intro"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
