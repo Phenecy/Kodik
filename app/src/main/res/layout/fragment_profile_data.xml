@@ -5,18 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/profile_name_text_view"
-        android:layout_width="wrap_content"
+        android:layout_width="165dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/rubik_medium"
         android:text="@string/registration_name_text_view"
         android:textColor="@color/black"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <EditText
         android:id="@+id/profile_name_edit_text"
@@ -35,14 +37,15 @@
 
     <TextView
         android:id="@+id/profile_email_text_view"
-        android:layout_width="wrap_content"
+        android:layout_width="165dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/rubik_medium"
         android:text="@string/registration_email_text_view"
         android:textColor="@color/black"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_name_edit_text" />
 
@@ -63,14 +66,15 @@
 
     <TextView
         android:id="@+id/profile_password_text_view"
-        android:layout_width="wrap_content"
+        android:layout_width="165dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/rubik_medium"
         android:text="@string/registration_password_text_view"
         android:textColor="@color/black"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_email_edit_text" />
 
@@ -127,5 +131,12 @@
         app:layout_constraintWidth_max="360dp"
         app:layout_constraintWidth_percent="0.91" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

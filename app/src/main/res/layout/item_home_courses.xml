@@ -7,14 +7,15 @@
 
     <TextView
         android:id="@+id/home_course_title"
-        android:layout_width="206dp"
+        android:layout_width="165dp"
         android:layout_height="33dp"
-        android:layout_marginStart="31dp"
         android:fontFamily="@font/rubik_medium"
         android:lineHeight="24sp"
         android:text="@string/home_courses_sample"
         android:textColor="@color/black"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,21 +23,28 @@
         android:id="@+id/home_course_card"
         android:layout_width="0dp"
         android:layout_height="95dp"
+        android:layout_marginBottom="16dp"
         app:cardBackgroundColor="#C4C4C4"
         app:cardCornerRadius="20dp"
         app:cardElevation="0dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintWidth_percent="0.91"
-        app:layout_constraintWidth_max="360dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_course_title">
+        app:layout_constraintTop_toBottomOf="@+id/home_course_title"
+        app:layout_constraintWidth_max="360dp"
+        app:layout_constraintWidth_percent="0.91">
 
         <ImageView
             android:id="@+id/home_course_image_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
