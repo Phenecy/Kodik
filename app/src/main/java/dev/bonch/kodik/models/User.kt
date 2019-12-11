@@ -1,6 +1,5 @@
 package dev.bonch.kodik.models
 
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.IgnoreExtraProperties
 
 @IgnoreExtraProperties
